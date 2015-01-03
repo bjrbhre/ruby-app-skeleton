@@ -6,8 +6,13 @@ group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-bundler'
-  if RUBY_PLATFORM.downcase.include?('darwin')
-    gem 'rb-fsevent'
-    # gem 'terminal-notifier-guard'
-  end
+  # Mac OS X
+  gem 'rb-fsevent', '~> 0.9.1', require: RUBY_PLATFORM.include?('darwin') && 'rb-fsevent'
+
+  # Unix
+  gem 'therubyracer', require: 'v8', platforms: :ruby unless RUBY_PLATFORM.include?('darwin')
+  gem 'rb-inotify', '~> 0.9', require: RUBY_PLATFORM.include?('linux') && 'rb-inotify'
+
+  # Windows
+  gem 'wdm', '>= 0.1.0', require: RUBY_PLATFORM =~ /mswin|mingw/i && 'wdm'
 end
