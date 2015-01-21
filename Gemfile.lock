@@ -52,6 +52,7 @@ GEM
     thor (0.19.1)
     timers (4.0.1)
       hitimes
+    wdm (0.1.0)
 
 PLATFORMS
   ruby
@@ -60,5 +61,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-rspec
-  rb-fsevent
+  rb-fsevent (~> 0.9.1)
+  rb-inotify (~> 0.9)
   rspec
+  wdm (>= 0.1.0)
