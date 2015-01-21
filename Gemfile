@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.1.3'
 
+gem 'rake', '~> 10.4.2'
+gem 'ruby-progressbar', '~> 1.7.0'
+
 group :development do
   gem 'rspec'
   gem 'guard'
