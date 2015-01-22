@@ -26,12 +26,13 @@ module Jobs
     #==========================================================================
     # Init and Configuration
     #==========================================================================
-    def config_basename
-      self.class.name.split('::')[-1].underscore
-    end
-
     def default_config
-      Application.config['jobs'][config_basename] || {}
+      cfg = Application.config
+      self.class.name.split('::').map(&:underscore).each do |name|
+        cfg = cfg[name.to_s] unless cfg.nil?
+      end
+      binding.pry
+      cfg || {}
     end
 
     def init_config(options)
